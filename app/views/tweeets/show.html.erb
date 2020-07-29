@@ -1,9 +1,34 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Tweeet:</strong>
-  <%= @tweeet.tweeet %>
-</p>
+<div class = "section">
+  <div class = "container">
+    <div class = "columns is-centered">
+      <div class = "column is-half">
+        <%# <h1 class = "title">Editing Tweeet</h1> %>
+        <%# <%= render 'form', tweeet: @tweeet %>
+        <p id="notice"><%= notice %></p>
+        <h1 class = "title">Tweet</h1>
+        <%= @tweeet.tweeet %>
 
-<%= link_to 'Edit', edit_tweeet_path(@tweeet) %> |
-<%= link_to 'Back', tweeets_path %>
+        <% if current_user.id == @tweeet.user_id %>
+          <%= link_to edit_tweeet_path(@tweeet) do %>
+            <span class = "icon"><i class = "fa fa-pencil" aria-hidden = "true"></i></span>
+          <% end %>
+        <% end %>
+        <%# <%= link_to 'Edit', edit_tweeet_path(@tweeet) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# <%= link_to 'Back', tweeets_path %>
+<nav class = "navbar is-fixed-bottom">
+  <div class = "navbar-menu">
+    <div class = "navbar-item">
+      <div class = "field is-grouped">
+        <p class = "control">
+          <%= link_to 'Back', tweeets_path, class: "button is-dark" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</nav>
